@@ -1,4 +1,4 @@
-{
+{"homepage": "https://github.com/Utkarshatemkar/career-assessment.git",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+"deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.9",

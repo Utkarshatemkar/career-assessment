@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Compass,
   Lock,
   Eye,
   EyeOff,
@@ -11,7 +10,7 @@ import {
 import { Card } from "@/components/ui/card";
 //import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import LanguageDropdown from "../ui/LanguageDropdown";
+import AppHeader from "../ui/AppHeader";
 
 export default function Login() {
   const [form, setForm] = useState({
@@ -35,24 +34,16 @@ export default function Login() {
   };
 
   return (
-   <div className="h-screen flex flex-col bg-slate-50 text-slate-800 overflow-hidden">
+   <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
       {/* Header */}
-      <header className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-10 pt-6 pb-3">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 flex items-center justify-center text-white">
-            <Compass size={20} />
-          </div>
-          <span className="text-2xl font-bold">Pathfinder</span>
-        </div>
-        <LanguageDropdown />
-      </header>
+     <AppHeader/>
 
       {/* Main */}
-     <main className="flex flex-col lg:flex-row flex-1 h-full overflow-hidden">
+     <main className="flex flex-col lg:flex-row flex-1 pt-20 min-h-[calc(100vh-80px)]">
         {/* Illustration panel (left) */}
-        <section
+    <section
   id="illustration_panel"
-  className="lg:w-[56%] relative overflow-hidden bg-slate-900 flex flex-col justify-center p-8 lg:p-20 min-h-screen hidden lg:flex"
+  className="lg:w-[56%] w-full relative overflow-hidden bg-slate-900 flex flex-col justify-center items-center p-8 lg:p-20 min-h-[300px] lg:min-h-full"
 >
   {/* Background Elements (UNCHANGED) */}
   <div className="absolute inset-0 z-0">
@@ -66,7 +57,7 @@ export default function Login() {
   </div>
 
   {/* ✅ GROUPED CONTENT */}
- <div className="relative z-10 flex flex-col items-center justify-start text-center h-full -mt-20 lg:-mt-28">
+ <div className="relative z-10 flex flex-col items-center justify-center text-center gap-6 max-w-xl">
 
     {/* IMAGE */}
     <img
@@ -93,7 +84,8 @@ export default function Login() {
   </div>
 </section>
         {/* Right side: use the provided "glass-panel" styling converted to JSX */}
-       <section className="w-full lg:w-[44%] flex items-start justify-center px-6 py-12 h-full overflow-y-auto">
+       <section className="w-full lg:w-[44%] flex items-center justify-center px-6 py-10 overflow-y-auto">
+        <div className="w-full max-w-md mx-auto">
           <Card className="glass-panel rounded-[32px] p-8 lg:p-10 shadow-soft shadow-indigo-900/5 relative overflow-hidden bg-white/10 backdrop-blur-xl border-white/20 w-full max-w-md">
             {/* Card Top Highlight */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-600 to-violet-600 opacity-80" />
@@ -157,7 +149,7 @@ export default function Login() {
                     type={showPassword ? "text" : "password"}
                     value={form.password}
                     onChange={handleChange}
-                    className="w-full pl-11 pr-12 py-3.5 bg-white border border-slate-200 rounded-[16px] text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-300 shadow-sm"
+                    className="w-full h-12 pl-11 pr-12 py-3.5 bg-white border border-slate-200 rounded-[16px] text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-300 shadow-sm"
                     placeholder="Enter your password"
                     required
                   />
@@ -274,7 +266,7 @@ export default function Login() {
                 Create account
               </button>
             </p>
-          </Card>
+          </Card></div>
         </section>
       </main>
     </div>

@@ -1,30 +1,22 @@
-import { Compass } from "lucide-react";
-import LanguageDropdown from "../ui/LanguageDropdown";
+import AppHeader from "../ui/AppHeader";
 import { useNavigate } from "react-router-dom";
+
 
 export default function ResetSuccess() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen flex flex-col bg-slate-50 text-slate-800 overflow-hidden">
+    <div className="min-h-screen lg:h-screen flex flex-col bg-slate-50 text-slate-800 overflow-y-auto lg:overflow-hidden">
 
       {/* HEADER */}
-      <header className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-10 py-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 flex items-center justify-center text-white">
-            <Compass size={20} />
-          </div>
-          <span className="text-2xl font-bold">Pathfinder</span>
-        </div>
-        <LanguageDropdown />
-      </header>
+      <AppHeader/>
 
-      <main className="flex flex-col lg:flex-row h-full overflow-hidden">
+      <main className="flex flex-col lg:flex-row flex-1 pt-20 lg:h-[calc(100vh-80px)]">
 
         {/* LEFT SIDE */}
        <section
   id="illustration_panel"
-  className="lg:w-[55%] relative overflow-hidden bg-slate-900 flex flex-col justify-center p-8 lg:p-20 h-full hidden lg:flex"
+  className="w-full lg:w-[55%] relative overflow-hidden bg-slate-900 flex flex-col justify-center p-6 sm:p-8 lg:p-20 min-h-[40vh] lg:h-full"
 >
   {/* Background Elements */}
   <div className="absolute inset-0 z-0">
@@ -65,7 +57,7 @@ export default function ResetSuccess() {
         {/* RIGHT SIDE */}
        <section
   id="success_state_section"
-  className="lg:w-[45%] w-full bg-[#f8fafc] relative flex justify-center items-start p-6 lg:p-12 h-full overflow-y-auto overflow-x-hidden"
+  className="lg:w-[45%] w-full bg-[#f8fafc] relative flex items-center justify-center px-4 sm:px-6 py-10 lg:py-0 lg:h-full overflow-y-auto lg:overflow-hidden"
 >
   {/* Background pattern */}
   <div
@@ -77,7 +69,7 @@ export default function ResetSuccess() {
   />
 
   {/* CENTER WRAPPER (perfect centering) */}
-  <div className="w-full max-w-md relative z-10 flex flex-col items-center mx-auto py-10">
+  <div className="w-full max-w-md relative z-10 flex flex-col justify-center">
 
     {/* GLASS CARD */}
     <div className="glass-panel rounded-[32px] p-8 lg:p-12 shadow-soft shadow-indigo-900/5 relative overflow-hidden bg-white/80 w-full text-center">

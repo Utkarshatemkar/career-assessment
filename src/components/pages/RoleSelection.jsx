@@ -1,5 +1,4 @@
 import {
-  Compass,
   User,
   Users,
   Briefcase,
@@ -8,31 +7,24 @@ import {
 } from "lucide-react";
 
 import { useState } from "react";
-import LanguageDropdown from "../ui/LanguageDropdown";
+
 import { useNavigate } from "react-router-dom";
 import { RoleCard } from "../ui/RoleCard"; // ✅ import your RoleCard
+import AppHeader from "../ui/AppHeader";
 
 export default function RoleSelection() {
   const [selectedRole, setSelectedRole] = useState("Student");
   const navigate = useNavigate();
 
   return (
-   <div className="h-screen flex flex-col bg-slate-50 text-slate-800 overflow-hidden">
+   <div className="min-h-screen lg:h-screen flex flex-col bg-slate-50 text-slate-800 overflow-y-auto lg:overflow-hidden">
       {/* Header */}
-      <header className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-10 py-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 flex items-center justify-center text-white">
-            <Compass size={20} />
-          </div>
-          <span className="text-2xl font-bold">Pathfinder</span>
-        </div>
-        <LanguageDropdown />
-      </header>
+      <AppHeader/>
 
       {/* Main */}
-      <main className="flex flex-col lg:flex-row h-full overflow-hidden">
+      <main className="flex flex-col lg:flex-row flex-1 pt-20 lg:h-[calc(100vh-80px)]">
         {/* LEFT SIDE */}
-   <section className="lg:w-[55%] relative overflow-hidden bg-slate-900 flex flex-col justify-center p-8 lg:p-20 h-full hidden lg:flex">
+  <section className="w-full lg:w-[55%] relative overflow-hidden bg-slate-900 flex flex-col justify-center p-6 sm:p-8 lg:p-20 min-h-[40vh] lg:h-full">
   {/* Background Elements */}
   <div className="absolute inset-0 z-0">
     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo-900 via-slate-900 to-violet-900 opacity-90" />
@@ -72,7 +64,7 @@ export default function RoleSelection() {
 </section>
        
        {/* RIGHT SIDE */}
-<section className="lg:w-[45%] w-full bg-[rgb(248,250,252)] relative flex justify-center p-6 lg:p-12 h-screen overflow-y-auto overflow-x-hidden">
+<section className="lg:w-[45%] w-full bg-[rgb(248,250,252)] relative flex items-center justify-center px-4 sm:px-6 py-10 lg:py-0 lg:h-full overflow-y-auto lg:overflow-hidden">
 
   {/* Background pattern */}
   <div

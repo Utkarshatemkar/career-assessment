@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Welcome from "./components/pages/Welcome";
 import Login from "./components/pages/Login";
 import RoleSelection from "./components/pages/RoleSelection";
@@ -13,7 +13,8 @@ function App() {
   
 
   return (
-    <><Router>
+
+    <><BrowserRouter>
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
@@ -24,7 +25,7 @@ function App() {
 <Route path="/reset-success" element={<ResetSuccess />} />
 <Route path="/forgotpass" element={<ForgotPassword/>}/>
       </Routes>
-    </Router>
+    </BrowserRouter>
     </>
   )
 }

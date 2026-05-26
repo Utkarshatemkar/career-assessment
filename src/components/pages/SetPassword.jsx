@@ -1,8 +1,7 @@
-import { Compass, Lock, Eye, EyeOff } from "lucide-react";
-import LanguageDropdown from "../ui/LanguageDropdown";
+import {  Lock, Eye, EyeOff } from "lucide-react";
 import { useNavigate,useLocation } from "react-router-dom";
 import { useState } from "react";
-
+import AppHeader from "@/components/ui/AppHeader";
 export default function SetPassword() {
   const navigate = useNavigate();
 
@@ -41,24 +40,16 @@ const sentCode = location.state?.code; //
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
+  <div className="min-h-screen lg:h-screen flex flex-col bg-slate-50 text-slate-800 overflow-y-auto lg:overflow-hidden">
 
       {/* HEADER */}
-      <header className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-10 py-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 flex items-center justify-center text-white">
-            <Compass size={20} />
-          </div>
-          <span className="text-2xl font-bold">Pathfinder</span>
-        </div>
-        <LanguageDropdown />
-      </header>
+      <AppHeader/>
 
       {/* MAIN */}
-      <main className="flex flex-col lg:flex-row h-screen overflow-hidden">
+      <main className="flex flex-col lg:flex-row flex-1 pt-20 lg:h-[calc(100vh-80px)]">
 
         {/* LEFT SIDE */}
-       <section className="hidden lg:flex w-[55%] relative bg-slate-900 flex-col justify-center px-20 py-16 h-screen overflow-hidden">
+     <section className="w-full lg:w-[55%] relative bg-slate-900 flex flex-col justify-center px-6 sm:px-8 lg:px-20 py-10 lg:py-16 min-h-[40vh] lg:h-full overflow-hidden">
 
  
   {/* Background Elements */}
@@ -107,7 +98,7 @@ const sentCode = location.state?.code; //
 
        
         {/* RIGHT SIDE */}
-<section className="lg:w-[45%] w-full h-screen overflow-y-auto bg-[#f8fafc] relative flex items-start justify-center p-6 lg:p-12">
+<section className="lg:w-[45%] w-full flex items-center justify-center px-4 sm:px-6 py-10 lg:py-0 lg:h-full overflow-y-auto lg:overflow-hidden bg-[#f8fafc] relative">
 
   {/* Background pattern */}
   <div
@@ -118,7 +109,7 @@ const sentCode = location.state?.code; //
     }}
   />
 
-  <div className="w-full max-w-md relative z-10 mt-16 lg:mt-0 flex flex-col justify-center">
+ <div className="w-full max-w-md relative z-10 flex flex-col justify-center">
 
     {/* CARD */}
     <div className="relative rounded-[32px] p-8 lg:p-10 bg-white/80 backdrop-blur-xl shadow-lg border border-slate-100 overflow-hidden">

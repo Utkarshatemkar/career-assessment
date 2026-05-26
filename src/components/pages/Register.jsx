@@ -1,12 +1,10 @@
 import {
-  Compass,
   ArrowRight, User, Users, Lock, Eye, EyeOff
 } from "lucide-react";
-
 import { Link } from "react-router-dom";
-import LanguageDropdown from "../ui/LanguageDropdown";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import AppHeader from "../ui/AppHeader";
 export default function Register() {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
@@ -34,55 +32,38 @@ export default function Register() {
   "bg-green-500",
 ];
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
+   <div className="min-h-screen lg:h-screen flex flex-col bg-slate-50 text-slate-800 overflow-y-auto lg:overflow-hidden">
       {/* Header */}
-      <header className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-10 py-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 flex items-center justify-center text-white">
-            <Compass size={20} />
-          </div>
-          <span className="text-2xl font-bold">Pathfinder</span>
-        </div>
-        <LanguageDropdown />
-      </header>
+     <AppHeader/>
 
       {/* Main */}
-      <main className="flex flex-col lg:flex-row min-h-screen">
+    <main className="flex flex-col lg:flex-row flex-1 pt-20 lg:h-[calc(100vh-80px)]">
         {/* LEFT SIDE */}
-<section className="hidden lg:flex w-[55%] h-screen relative overflow-hidden bg-slate-900 flex-col justify-center items-center px-20">
+<section className="flex w-full lg:w-[55%] relative overflow-hidden bg-slate-900 flex-col justify-center items-center px-6 sm:px-10 lg:px-20 py-10 lg:py-0">
 
   {/* Background */}
-  <div className="absolute inset-0 z-0">
-    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo-900 via-slate-900 to-violet-900 opacity-90" />
-    <div className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] rounded-full bg-indigo-500/20 blur-[120px]" />
-    <div className="absolute bottom-[10%] right-[0%] w-[50%] h-[50%] rounded-full bg-violet-600/20 blur-[100px]" />
-
-    <div className="absolute top-[20%] right-[15%] w-24 h-24 rounded-[24px] bg-gradient-to-tr from-indigo-500 to-violet-400 opacity-20 rotate-12 backdrop-blur-3xl" />
-    <div className="absolute bottom-[25%] left-[10%] w-32 h-32 rounded-full bg-gradient-to-tr from-blue-400 to-indigo-500 opacity-10 backdrop-blur-xl" />
-    <div className="absolute top-[40%] left-[20%] w-16 h-16 rounded-[16px] border border-white/10 rotate-45" />
-  </div>
+  <AppHeader/>
 
   {/* CONTENT (centered but lifted upward ~2cm) */}
-  <div className="relative z-10 flex flex-col items-center justify-center text-center">
+  <div className="relative z-10 flex flex-col items-center text-center">
 
     {/* IMAGE */}
-    <img
-      className="w-[80%] max-h-[80%] object-contain mix-blend-luminosity opacity-90 "
+     <img
+      className="w-[80%] sm:w-[60%] lg:w-[80%] max-h-[280px] lg:max-h-[80%] object-contain opacity-90"
       src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3ecdb9a8c2-5148df2577600d87fcc4.png"
       alt="illustration"
     />
 
     {/* TEXT */}
-    <div className="max-w-xl">
-      <h1 className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-2 tracking-tight">
+    <div className="max-w-md lg:max-w-xl mt-6 lg:mt-4">
+      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-2">
         Create your account to <br />
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300">
           unlock your potential.
         </span>
       </h1>
-
-      <p className="text-base text-slate-300 font-light">
-        Join thousands of students and educators discovering their ideal career paths through data-driven insights.
+       <p className="text-sm sm:text-base text-slate-300">
+        Join thousands of students and educators discovering their ideal career paths.
       </p>
     </div>
 
@@ -91,7 +72,7 @@ export default function Register() {
 
 
         {/* RIGHT SIDE */}
-      <section className="lg:w-[45%] w-full bg-[#f8fafc] relative h-screen overflow-y-auto overflow-x-hidden flex justify-center p-6 lg:p-12">
+   <section className="w-full lg:w-[45%] relative flex justify-center items-center p-6 lg:p-12 overflow-y-auto">
 
           {/* Background subtle pattern */}
           <div
@@ -107,10 +88,10 @@ export default function Register() {
           <div className="absolute -top-20 -left-20 w-64 h-64 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 pointer-events-none" />
 
           {/* Wrapper (IMPORTANT for alignment) */}
-          <div className="w-full max-w-md relative z-10 mt-16 lg:mt-0">
+         <div className="w-full max-w-md relative z-10 my-auto">
 
             {/* Glass Card */}
-             <div className="glass-panel rounded-[32px] p-8 lg:p-10 shadow-soft shadow-indigo-900/5 relative overflow-hidden bg-white backdrop-blur-xl border border-white/20">
+             <div className="glass-panel rounded-[32px] p-6 sm:p-8 lg:p-10 shadow-soft shadow-indigo-900/5 relative overflow-hidden bg-white backdrop-blur-xl border border-white/20">
 
               {/* Top highlight bar */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-violet-500 opacity-80" />
@@ -173,7 +154,7 @@ export default function Register() {
   </div>
 
   {/* Grade + School */}
-  <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4 mt-2">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-100 pt-4 mt-2">
 
     <div>
   <label className="block text-sm font-semibold text-slate-700 mb-1.5">

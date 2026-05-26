@@ -1,8 +1,7 @@
-import { Compass } from "lucide-react";
-import LanguageDropdown from "../ui/LanguageDropdown";
+import GradientBackground from "@/components/ui/GradientBackground";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef } from "react";
-
+import AppHeader from "@/components/ui/AppHeader";
 export default function Verification() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -59,102 +58,96 @@ export default function Verification() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-slate-50 text-slate-800 overflow-hidden">
-      {/* Header */}
-      <header className="absolute top-0 left-0 w-full flex justify-between items-center z-50 px-10 py-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 flex items-center justify-center text-white">
-            <Compass size={20} />
-          </div>
-          <span className="text-2xl font-bold">Pathfinder</span>
+ <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
+  
+  {/* Header */}
+  <AppHeader />
+
+  {/* Main */}
+<main className="flex flex-col lg:flex-row flex-1 pt-20">
+    {/* ✅ pt-20 fixes overlap with fixed header */}
+
+    {/* LEFT SIDE */}
+    <section className="w-full lg:w-[55%] relative overflow-hidden bg-slate-900 flex flex-col justify-center p-6 sm:p-8 lg:p-20 min-h-[40vh] lg:min-h-full">
+      
+      {/* Background */}
+      <GradientBackground />
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center text-center -mt-10 lg:-mt-24">
+        <img
+          className="w-[80%] max-h-[70%] object-contain mix-blend-luminosity opacity-90"
+          src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ab378e51a5-6b98e91afc2453513772.png"
+          alt="illustration"
+        />
+
+        <div className="max-w-xl mt-4 px-2">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-2">
+            Secure your account with <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300">
+              two-step verification.
+            </span>
+          </h2>
+
+          <p className="text-sm sm:text-base text-slate-300">
+            Verify your identity to continue your journey.
+          </p>
         </div>
-        <LanguageDropdown />
-      </header>
+      </div>
+    </section>
 
-      {/* Main */}
-      <main className="flex flex-col lg:flex-row h-full overflow-hidden">
-        {/* LEFT SIDE */}
-        <section className="lg:w-[55%] relative overflow-hidden bg-slate-900 flex flex-col justify-center p-8 lg:p-20 h-full hidden lg:flex">
-          {/* Background */}
-         <div className="absolute inset-0 z-0">
-    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo-900 via-slate-900 to-violet-900 opacity-90" />
-    <div className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] rounded-full bg-indigo-500/20 blur-[120px]" />
-    <div className="absolute bottom-[10%] right-[0%] w-[50%] h-[50%] rounded-full bg-violet-600/20 blur-[100px]" />
+    {/* RIGHT SIDE */}
+<section className="lg:w-[45%] w-full flex items-start lg:items-center justify-center px-4 sm:px-6 py-10 lg:py-0">
+      
+      <div className="w-full max-w-md mx-auto">
+        <div className="glass-panel w-full rounded-[24px] sm:rounded-[32px] p-5 sm:p-6 lg:p-8 bg-white/80 shadow-md">
+          
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 text-center">
+            Enter 6-digit code
+          </h2>
 
-    <div className="absolute top-[20%] right-[15%] w-24 h-24 rounded-[24px] bg-gradient-to-tr from-indigo-500 to-violet-400 opacity-20 rotate-12 backdrop-blur-3xl" />
-    <div className="absolute bottom-[25%] left-[10%] w-32 h-32 rounded-full bg-gradient-to-tr from-blue-400 to-indigo-500 opacity-10 backdrop-blur-xl" />
-    <div className="absolute top-[40%] left-[20%] w-16 h-16 rounded-[16px] border border-white/10 rotate-45" />
-  </div>
+          <p className="text-slate-500 text-center mb-6 text-sm sm:text-base">
+            We sent a verification code to <br />
+            <span className="text-indigo-600 font-semibold">{maskedEmail}</span>
+          </p>
 
-          {/* Content */}
-          <div className="relative z-10 flex flex-col items-center text-center -mt-20 lg:-mt-32">
-            <img
-              className="w-[80%] max-h-[80%] object-contain mix-blend-luminosity opacity-90 mt-4"
-              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ab378e51a5-6b98e91afc2453513772.png"
-              alt="illustration"
-            />
-            <div className="max-w-xl mt-4">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-2 tracking-tight">
-                Secure your account with <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-violet-300">
-                  two-step verification.
-                </span>
-              </h2>
-              <p className="text-base text-slate-300 font-light">
-                We take your privacy seriously. Verify your identity to continue exploring your personalized career path.
-              </p>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleVerify();
+            }}
+            className="flex flex-col gap-5 sm:gap-6"
+          >
+            {/* OTP */}
+            <div className="flex justify-center flex-wrap gap-2 sm:gap-3 max-w-[260px] sm:max-w-full mx-auto">
+              {enteredCode.map((digit, index) => (
+                <input
+                  key={index}
+                  ref={(el) => (inputsRef.current[index] = el)}
+                  type="text"
+                  maxLength="1"
+                  value={digit}
+                  onChange={(e) => handleChange(e.target.value, index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 text-center text-base sm:text-lg font-semibold border rounded-lg"
+                />
+              ))}
             </div>
-          </div>
-        </section>
 
-        {/* RIGHT SIDE */}
-        <section className="lg:w-[45%] w-full bg-[#f8fafc] flex items-center justify-center">
-          <div className="w-full max-w-md relative z-10 flex flex-col items-center justify-center">
-            <div className="glass-panel w-full rounded-[32px] p-8 lg:p-10 bg-white/80">
-              <h2 className="text-3xl font-bold text-slate-900 mb-3 text-center">
-                Enter 6-digit code
-              </h2>
-              <p className="text-slate-500 text-center mb-6">
-                We sent a verification code to <br />
-                <span className="text-indigo-600 font-semibold">{maskedEmail}</span>
+            {error && (
+              <p className="text-center text-sm text-red-500">
+                Invalid code. Please try again.
               </p>
+            )}
 
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleVerify();
-                }}
-                className="flex flex-col gap-6"
-              >
-                <div className="flex justify-center gap-3">
-                  {enteredCode.map((digit, index) => (
-                    <input
-                      key={index}
-                      ref={(el) => (inputsRef.current[index] = el)}
-                      type="text"
-                      maxLength="1"
-                      value={digit}
-                      onChange={(e) => handleChange(e.target.value, index)}
-                      onKeyDown={(e) => handleKeyDown(e, index)}
-                      className="w-12 h-12 text-center text-lg font-semibold border rounded-lg"
-                    />
-                  ))}
-                </div>
+            <button className="w-full py-3 rounded-[14px] sm:rounded-[16px] bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold">
+              Verify
+            </button>
+          </form>
+        </div>
+      </div>
 
-                {error && (
-                  <p className="text-center text-sm text-red-500">
-                    Invalid code. Please try again.
-                  </p>
-                )}
-
-                <button className="w-full py-3 rounded-[16px] bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold">
-                  Verify
-                </button>
-              </form>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
+    </section>
+  </main>
+</div>
   );
 }
